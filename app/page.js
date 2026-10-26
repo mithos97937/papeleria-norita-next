@@ -49,8 +49,8 @@ export default function Home() {
           <h2>Tu papelería de confianza en Sayula</h2>
           <p>
             Desde un lápiz hasta todo el material para el regreso a clases.
-            Elige tus productos en la tienda, agrégalos al carrito y apártalos
-            por WhatsApp.
+            Elige tus productos en la tienda, agrégalos al carrito y haz tu
+            compra en línea.
           </p>
           <small className="welcome-credit">
             Animación: Free Paper notebook writing animation Animation, por MD

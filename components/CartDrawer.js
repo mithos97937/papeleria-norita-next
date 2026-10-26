@@ -3,12 +3,9 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiX, FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa";
+import { FiX, FiPlus, FiMinus, FiTrash2, FiLock } from "react-icons/fi";
 import { useCart } from "./CartContext";
 import LottieAnimation from "./LottieAnimation";
-
-const NUMERO_WHATSAPP = "523421234567";
 
 function formatoPrecio(valor) {
   return valor.toLocaleString("es-MX", {
@@ -47,13 +44,6 @@ export default function CartDrawer() {
   }, [carritoAbierto, cerrarCarrito]);
 
   if (!carritoAbierto) return null;
-
-  const lineas = items.map(
-    (item) =>
-      `- ${item.cantidad} x ${item.nombre} (${formatoPrecio(item.precio * item.cantidad)})`,
-  );
-  const mensaje = `Hola, quiero apartar estos productos de Papelería Norita:\n${lineas.join("\n")}\nTotal: ${formatoPrecio(total)}`;
-  const enlaceWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
 
   return (
     <div className="cart-overlay" onClick={cerrarCarrito}>
@@ -148,22 +138,21 @@ export default function CartDrawer() {
               <span>{formatoPrecio(total)}</span>
             </div>
 
-            <a
-              href={enlaceWhatsApp}
+            <Link
+              href="/checkout"
               className="cart-checkout"
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={cerrarCarrito}
             >
-              <FaWhatsapp />
-              Apartar por WhatsApp
-            </a>
+              <FiLock />
+              Finalizar compra
+            </Link>
 
             <button type="button" className="cart-clear" onClick={vaciar}>
               Vaciar carrito
             </button>
 
             <p className="cart-note">
-              El pago se realiza en tienda al recoger tu pedido.
+              Compra simulada: no se realiza ningún cobro real.
             </p>
           </div>
         )}

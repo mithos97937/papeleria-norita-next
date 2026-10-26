@@ -80,6 +80,7 @@ export function CartProvider({ children }) {
 
   const value = {
     items,
+    cargado,
     totalArticulos,
     total,
     carritoAbierto,
